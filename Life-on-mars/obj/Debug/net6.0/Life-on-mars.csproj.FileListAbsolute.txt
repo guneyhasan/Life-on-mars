@@ -1,0 +1,15 @@
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/bin/Debug/net6.0/Life-on-mars
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/bin/Debug/net6.0/Life-on-mars.deps.json
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/bin/Debug/net6.0/Life-on-mars.runtimeconfig.json
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/bin/Debug/net6.0/Life-on-mars.dll
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/bin/Debug/net6.0/Life-on-mars.pdb
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.csproj.AssemblyReference.cache
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.AssemblyInfoInputs.cache
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.AssemblyInfo.cs
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.csproj.CoreCompileInputs.cache
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.dll
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/refint/Life-on-mars.dll
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.pdb
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/Life-on-mars.genruntimeconfig.cache
+/Users/hasanfurkanguney/Projects/Life-on-mars/Life-on-mars/obj/Debug/net6.0/ref/Life-on-mars.dll
