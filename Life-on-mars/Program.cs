@@ -4,7 +4,7 @@ double choose;
 
 Console.WriteLine("Welcome");
 Console.WriteLine("Please Choose The Operation");
-Console.WriteLine("1-Load File **** 2-Enter Dna String **** 3.1-Create Random Perfect Dna **** 3.2-Create Random Dna");
+Console.WriteLine("1-Load File **** 2-Enter Dna String **** 3-Create a Random Dna");
 choose = Convert.ToDouble(Console.ReadLine());
 string[] dnainput;
 string[] dna = new string[1000];
@@ -20,23 +20,33 @@ switch (choose)
         Console.WriteLine("Please enter the name of text file:");
         filename = (Console.ReadLine());
         dnainput = new string[]{ File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename)} ;
-        /*int modcontrol = dnainput.Length % 3;
+        int modcontrol = dnainput.Length % 3;
        
-            dna = new string[(dnainput.Length / 3)];
+            dna = new string[150];
             int x1 = 0;
 
-            while (x1 < (dnainput.Length / 3))
+            if (modcontrol==0)
             {
-                for (int i = 0; i <= dnainput.Length - 3; i = i + 3)
+                for (int i = 0; i < dnainput.Length - 3; i = i + 3)
                 {
 
                     dna[x1] = dnainput[i] + dnainput[i + 1] + dnainput[i + 2];
+                    Console.WriteLine(dna[x1]);
                     x1++;
-                    Console.WriteLine(dna);
+                    
 
                 }
             }
-        */
+            else
+            {
+                for (int i = 0; i < dnainput.Length; i++)
+                {
+                    dna = dnainput;
+                    Console.WriteLine(dna[i]);
+                }
+            }
+           
+        
         
         break;
 
