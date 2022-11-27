@@ -6,59 +6,90 @@ Console.WriteLine("Welcome");
 Console.WriteLine("Please Choose The Operation");
 Console.WriteLine("1-Load File **** 2-Enter Dna String **** 3-Create a Random Dna");
 choose = Convert.ToDouble(Console.ReadLine());
-string[] dnainput;
+string dnainput;
 string[] dna = new string[1000];
 int dnalngth = 0;
 string[] randomdna = new string[5];
 string gendername = " ";
 
+//first choosing between 3 operations to initalize dna string
 switch (choose)
 {
+    //read txt file
     case 1:
         Console.Clear();
         string filename;
         Console.WriteLine("Please enter the name of text file:");
         filename = (Console.ReadLine());
-        dnainput = new string[]{ File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename)} ;
+        dnainput =  File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename) ;
         int modcontrol = dnainput.Length % 3;
-       
-            dna = new string[150];
-            int x1 = 0;
+        dna = new string[150];
+        int x1 = 0;
+        
+        
+        for (int i = 0; i <= dnainput.Length -3 ; i = i + 3)
+        {
 
-            if (modcontrol==0)
-            {
-                for (int i = 0; i < dnainput.Length - 3; i = i + 3)
-                {
-
-                    dna[x1] = dnainput[i] + dnainput[i + 1] + dnainput[i + 2];
-                    Console.WriteLine(dna[x1]);
-                    x1++;
+            dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+            x1++;
                     
 
-                }
-            }
-            else
-            {
-                for (int i = 0; i < dnainput.Length; i++)
-                {
-                    dna = dnainput;
-                    Console.WriteLine(dna[i]);
-                }
-            }
-           
-        
-        
-        break;
+        }
 
+        for (int i = 0; i < dna.Length; i++)
+        {
+            Console.Write(dna[i]+" ");
+            
+        }
+
+        break;
+    
+    //input dna 
     case 2:
         Console.Clear();
         Console.WriteLine("Please Enter the Dna String"); 
-        dna = new string[]{Console.ReadLine()};
-        Console.WriteLine(dna); 
-        
+        dnainput = Console.ReadLine();
+        int dnainputmod = dnainput.Length % 3;
         dnalngth = dna.Length;
+        x1 = 0;
+        if (dnainputmod == 0)
+        {
+            for (int i = 0; i <= dnainput.Length - 3; i = i + 3)
+            {
+
+                dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+                x1++;
+
+
+            }
+
+            for (int i = 0; i < dna.Length; i++)
+            {
+                Console.Write(dna[i] + " ");
+
+            }
+        }
+        else if(dnainputmod==2)
+        {
+            for (int i = 0; i< dnainput.Length-3 ; i = i + 3)
+            {
+
+                dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+                x1++;
+
+
+            }
+
+            for (int i = 0; i < dna.Length; i++)
+            {
+                Console.Write(dna[i] + " ");
+
+            }
+        }
+
         break;
     
+    //random dna
     case 3: 
             Console.WriteLine("Please choose way of the random: ");
             Console.WriteLine("1-BLOB Random ");
@@ -174,7 +205,7 @@ switch (choose)
         for (int qqq = 0; qqq <= 3; qqq++)
         {
             dna[qqq] = gender[qqq];
-            Console.WriteLine(dna[qqq]);
+            Console.Write(dna[qqq]+ " ");
         }
 
         Console.WriteLine(gendername);
@@ -184,49 +215,47 @@ switch (choose)
 
 
         //main array with start and stop codons
-        for (int q1 = 5; q1 <= splitteddna.Length+5+(2*agen) ; q1++)
+        for (int q1 = 4; q1 <splitteddna.Length+4+(2*agen) ; q1++)
         {
             
-            {
-                
+            
 
-                if (q1 == 5 || q1 == 5 + acodon + 1 || q1 == 5 + 2 * acodon + 2 || q1 == 5 + 3 * acodon + 3 ||
-                    q1 == 5 + 4 * acodon + 4 || q1 == 5 + 5 * acodon + 5 || q1 == 5 + 6 * acodon + 6 )
+                if (q1 == 4 || q1 == 4 + acodon + 1 || q1 == 4 + 2 * acodon + 2 || q1 == 4 + 3 * acodon + 3 ||
+                    q1 == 4 + 4 * acodon + 4 || q1 == 4 + 5 * acodon + 5 || q1 == 4 + 6 * acodon + 6 )
                 {
                     dna[q1] = "ATG";
-
-
-
+                    Console.Write(dna[q1]+ " ");
                 }
 
-                else if (q1 == 5 + acodon || q1 == 5 + 2 * acodon + 1 || q1 == 5 + 3 * acodon + 2 ||
-                         q1 == 5 + 4 * acodon + 3 || q1 == 5 + 5 * acodon + 4 || q1 == 5 + 6 * acodon + 5 ||
-                         q1 == 5 + 7 * acodon + 6)
+                else if (q1 == 4 + acodon || q1 == 4 + 2 * acodon + 1 || q1 == 4 + 3 * acodon + 2 ||
+                         q1 == 4 + 4 * acodon + 3 || q1 == 4 + 5 * acodon + 4 || q1 == 4 + 6 * acodon + 5 ||
+                         q1 == 4 + 7 * acodon + 6)
                 {
                     int cdnrndm = rndmdna.Next(0, 3);
                     dna[q1] = stopcodon[cdnrndm];
+                    Console.Write(dna[q1]+" ");
 
                 }
-                else if (qq <= splitteddna.Length-1)
+                else if (qq < splitteddna.Length)
                 {
-                    
-                    
+
+                    if (splitteddna[qq] != " ")
+                    {
                         dna[q1] = splitteddna[qq];
+                        Console.Write(dna[q1] + " ");
                         qq++;
-                 
+                    }
+
                 }
 
 
 
-                /*for (int i = 0; i < dna.Length; i++)
-                {
-                    Console.Write(dna[i] + " ");
-                }*/
-            }
+               
+            
 
         }
 
-                break;
+        break;
                 case 2 :
                     rndmdna = new Random(); 
                     
@@ -243,55 +272,96 @@ switch (choose)
                     break;
             }
             break;
-} 
+    
+}
 
-        Console.WriteLine("");
-        Console.WriteLine("Please Choose a operation");
-        Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5");
-        Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11");
-        Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 ");
-        int choose1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(""); 
+Console.WriteLine("Please Choose a operation"); 
+Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5"); 
+Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11"); 
+Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 "); 
+int choose1 = Convert.ToInt32(Console.ReadLine());
 
-
+//other choosing part
 while (choose1 != 0)
 {
     switch (choose1)
     {
+        //read txt file
         case 1:
-        Console.Clear();
-        string filename;
-        Console.WriteLine("Please enter the name of text file:");
-        filename = (Console.ReadLine());
-        dnainput = new string[]{ File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename)} ;
-        /*int modcontrol = dnainput.Length % 3;
-       
-            dna = new string[(dnainput.Length / 3)];
+            Console.Clear();
+            string filename;
+            Console.WriteLine("Please enter the name of text file:");
+            filename = (Console.ReadLine());
+            dnainput =  File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename) ;
+            int modcontrol = dnainput.Length % 3;
+            dna = new string[150];
             int x1 = 0;
+        
+        
+            for (int i = 0; i <= dnainput.Length -3 ; i = i + 3)
+            {
 
-            while (x1 < (dnainput.Length / 3))
+                dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+                x1++;
+                    
+
+            }
+
+            for (int i = 0; i < dna.Length; i++)
+            {
+                Console.Write(dna[i]+" ");
+            
+            }
+
+            break;
+        
+        //input dna
+        case 2:
+            Console.Clear();
+            Console.WriteLine("Please Enter the Dna String"); 
+            dnainput = Console.ReadLine();
+            int dnainputmod = dnainput.Length % 3;
+            dnalngth = dna.Length;
+            x1 = 0;
+            if (dnainputmod == 0)
             {
                 for (int i = 0; i <= dnainput.Length - 3; i = i + 3)
                 {
 
-                    dna[x1] = dnainput[i] + dnainput[i + 1] + dnainput[i + 2];
+                    dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
                     x1++;
-                    Console.WriteLine(dna);
+
+
+                }
+
+                for (int i = 0; i < dna.Length; i++)
+                {
+                    Console.Write(dna[i] + " ");
 
                 }
             }
-        */
-        
-        break;
+            else if(dnainputmod==2)
+            {
+                for (int i = 0; i< dnainput.Length-3 ; i = i + 3)
+                {
 
-        case 2:
-             Console.Clear();
-        Console.WriteLine("Please Enter the Dna String"); 
-        dna = new string[]{Console.ReadLine()};
-        Console.WriteLine(dna); 
-        
-        dnalngth = dna.Length;
-        break;
+                    dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+                    x1++;
 
+
+                }
+
+                for (int i = 0; i < dna.Length; i++)
+                {
+                    Console.Write(dna[i] + " ");
+
+                }
+            }
+
+            break;
+        
+        //random dna
         case 3: 
             Console.WriteLine("Please choose way of the random: ");
             Console.WriteLine("1-BLOB Random ");
@@ -477,6 +547,7 @@ while (choose1 != 0)
             }
             break;
         
+        //check dna gene structure
         case 4:
             Console.Clear();
             string[] repcounter = new string[] { "" };
@@ -576,11 +647,12 @@ while (choose1 != 0)
             if (tester3 == true && tester4 == true && tester5 == true)
             {
                 Console.WriteLine("");
-                Console.WriteLine("BLOB is OK!");
+                Console.WriteLine("Gene Structure is OK!");
             }
 
             break;
         
+        // check dna of blob organism
         case 5:
             Console.Clear();
             repcounter = new string[] { "" };
@@ -625,7 +697,7 @@ while (choose1 != 0)
 
             if (dnacase5.Length % 3 != 0)
             {
-                Console.Write("Incompleted codons won't be shown.");
+                Console.WriteLine("Incompleted codons won't be shown.");
             }
 
             bool tester = true;
@@ -643,6 +715,7 @@ while (choose1 != 0)
                 {
                     count2++;
                 }
+                 
             }
 
 
@@ -702,6 +775,7 @@ while (choose1 != 0)
 
             break;
         
+        //complement of a DNA sequence
         case 6:
             Console.Clear();
             repcounter = new string[] { "" };
@@ -756,7 +830,7 @@ while (choose1 != 0)
 
             }
 
-            string[] DNA = new string[20];
+            string[] DNA = new string[150];
             char aaa, bbb, ccc;
             int i1 = 0, i2 = 1, i3 = 2;
             int numberofcodons = dna2.Length / 3;
@@ -777,7 +851,8 @@ while (choose1 != 0)
             }
 
             break;
-
+        
+        //determine amino-acids  
         case 7:
             Console.Clear();
             repcounter = new string[] { "" };
@@ -907,6 +982,7 @@ while (choose1 != 0)
 
             break;
         
+        //delete codons
         case 8:
             Console.Clear();
             //deleting codons
@@ -914,54 +990,98 @@ while (choose1 != 0)
             int delcodon = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please enter the number of which codon do you want to start to delete: ");
             int delcodonth = Convert.ToInt32(Console.ReadLine());
-
+            
+            Console.Write("The original DNA:"+ " ");
+            for (int i = 0; i < dna.Length; i++)
+            {
+                Console.Write(dna[i]+ " ");
+            }
+            Console.SetCursorPosition(0,6);
+            Console.Write("The Edited DNA:"+ " ");
+            for (int i = 0; i < delcodonth-1; i++)
+            {
+                Console.Write(dna[i]+ " ");
+            }
+                      
+            
             for (int d = delcodonth - 1; d < dna.Length; d++)
             {
+                
                 if (d + delcodon <= dna.Length - 1)
                 {
                     dna[d] = dna[d + delcodon];
-                    Console.WriteLine(dna[d]);
+                    Console.Write(dna[d]+ " ");
+                    
+                }
+                if (d == dna.Length-1)
+                {
+                    Console.WriteLine(" ");
                 }
 
-
             }
+            Console.SetCursorPosition(0,6);
 
             break;
         
+        //insert codons
         case 9:
             Console.Clear();
             //inserting codons
-            Console.WriteLine("Please enter the number of codons you want to insert:");
-            int inscodon = Convert.ToInt32(Console.ReadLine());
-            string[] insertcodon = new string[inscodon];
-            for (int s = 0; s <= inscodon - 1; s++)
+            Console.WriteLine("Please enter the codon sequence:");
+            string insertcodonFRST =Console.ReadLine();
+            string[] insertcodon = new string[insertcodonFRST.Length/3];
+            int i9 = 0;
+            for (int i = 0; i < insertcodonFRST.Length-3; i=i+3)
             {
-                Console.WriteLine("Please enter one of the codons: ");
-                insertcodon[s] = Console.ReadLine();
+                insertcodon[i9] = insertcodonFRST[i].ToString() + insertcodonFRST[i + 2].ToString() + insertcodonFRST[i + 3].ToString();
+                i9++;
             }
+            
 
             Console.WriteLine("Please enter the number of which codon do you want to start to insert: ");
             int inscodonth = Convert.ToInt32(Console.ReadLine());
-            int ic = 0;
-            while (ic <= inscodon)
+            
+            Console.Write("The original DNA:"+ " ");
+            for (int i = 0; i < dna.Length; i++)
             {
-                for (int d = inscodonth - 1; d < dna.Length + inscodon; d++)
-                {
-                    if (d + inscodon <= dna.Length + inscodon)
-                    {
-                        dna[d + inscodon] = dna[d];
-                        dna[d] = insertcodon[ic];
-                    }
-
-                    Console.Write(dna[d]);
-                    ic++;
-                }
-
-
+                Console.Write(dna[i]+ " ");
             }
+            Console.SetCursorPosition(0,6);
+            
+            string[] dnatemp = new string[dna.Length];
+
+            for (int i = 0; i < dna.Length; i++)
+            {
+                dnatemp[i] = dna[i];
+            }
+
+            dna = new string[dnatemp.Length + insertcodon.Length];
+            
+            for (int i = inscodonth-1; i < dnatemp.Length;i++)
+            {
+                dna[i+insertcodon.Length] = dnatemp[i];
+            }
+
+            int ic = -1;
+            
+            for (int d = inscodonth - 1; d <inscodonth+insertcodon.Length; d++)
+            {
+                ic++;
+                dna[d] = insertcodon[ic];
+                
+            }
+            
+            for (int i = 0; i < dna.Length; i++)
+            {
+               Console.Write(dna[i]+" ");
+            }
+
+
+            
 
             break;
         
+        //find codons
         case 10:
             Console.Clear();
             repcounter = new string[] { "" };
@@ -977,95 +1097,31 @@ while (choose1 != 0)
             }
 
             string dnacase10 = repcounter[0];
-            string[] find1 = new string[dnacase10.Length/3];
-                int step, qq1;
-		    string ayrik1 = "", ayrik2="";
-
-                Console.Write("What codon sequence are you looking for:");
-                string ins = Console.ReadLine();
-
-                Console.Write("Which codon do you want to start from: ");
-                step = Convert.ToInt32(Console.ReadLine());
-                qq1 = step;
-                
-                for (int i = 0; i < dnacase10.Length; i++)
-                {
-                    if (i % 3 == 0 && i>0)
-                    {
-                        ayrik1 += " " + dnacase10[i];
-                        continue;
-                    }
-                    ayrik1 += dnacase10[i];
-
-                }
-                
-                for (int i = 0; i < ins.Length; i++)
-                {
-                    
-                    if ((i % 3 == 0) && (i>0))
-                    {
-                        ayrik2 +=" " + ins[i];
-                        continue;
-                    }
-                    ayrik2 += ins[i];
-
-                }
-
-                for (int p = 0; p < find1.Length; p++)
-                {
-                    find1 = ayrik1.Split();
-                    
-                    if ((ayrik2 == find1[p]))
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(p+1));
-                        break;
-                    }
-                    else if ((ayrik2 == find1[p]+" "+find1[p+1]) )
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(p+1));
-                        break;
-                    }
-                    else if ((ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]) )
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(p+1));
-                        break;
-                    }
-                    else if ((ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3]))
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(step+1));
-                        break;
-                    }
-                    else if ((ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3]+" "+find1[p+4]) && (p==2))
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(step+1));
-                        break;
-                    }
-                    else if((ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3]+" "+find1[p+4]+" "+find1[p+5])&& (p==1))
-                    {
-                        Console.WriteLine("DNA strand: "+ayrik1);
-                        Console.WriteLine("Codon sequence: "+ayrik2);
-                        Console.WriteLine("Starting from: "+qq1);
-                        Console.WriteLine("Result: "+(step+1));
-                        break;
-                    }
-                }
+            
+            
+           
             break;
+        
+        //reverse codons
+        case 11:
+            Console.Clear();
+            repcounter = new string[] { "" };
+            
+            for (int i = 0; i < dna.Length; i++)
+            {
 
+                repcounter[0] = repcounter[0] + dna[i];
+                if (repcounter.Length == dna.Length)
+                {
+                    break;
+                }
+            }
+
+            string dnacase11 = repcounter[0];
+            
+            break;
+        
+        //most repeated nucleotide sequences
         case 15:
             Console.Clear();
             Console.WriteLine("Enter the number of nucletide: ");
@@ -1109,6 +1165,7 @@ while (choose1 != 0)
 
             break;
         
+        // hydrogen bond statistics
         case 16:
             Console.Clear();
             repcounter = new string[] { "" };
@@ -1192,8 +1249,7 @@ while (choose1 != 0)
             break;
         
     }
-    Console.WriteLine(" ");
-    Console.WriteLine(" ");
+    
     Console.WriteLine(" ");
     Console.WriteLine("Please Choose a operation");
     Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5");
