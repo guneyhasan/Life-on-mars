@@ -1097,6 +1097,78 @@ while (choose1 != 0)
             }
 
             string dnacase10 = repcounter[0];
+            string ayrik1 = "";
+            string ayrik2 = "";
+            
+            		string[] find1 = new string[250];
+                int step, q10;
+                bool check = false;
+
+                Console.Write("What codon sequence are you looking for:");
+                string ins = Console.ReadLine();
+
+                Console.Write("Which codon do you want to start from: ");
+                step = Convert.ToInt32(Console.ReadLine());
+                q10 = step;
+                
+                for (int i = 0; i < dnacase10.Length; i++)
+                {
+                    if (i % 3 == 0 && i>0)
+                    {
+                        ayrik1 += " " + dnacase10[i];
+                        continue;
+                    }
+                    ayrik1 += dnacase10[i];
+
+                }
+                
+                for (int i = 0; i < ins.Length; i++)
+                {
+                    
+                    if ((i % 3 == 0) && (i>0))
+                    {
+                        ayrik2 +=" " + ins[i];
+                        continue;
+                    }
+                    ayrik2 += ins[i];
+                    
+
+                }
+
+                for (int l = 0; l < ayrik1.Split().Length; l++)
+                {
+                    find1[l] += ayrik1.Split()[l];
+                }
+
+                for (int p = step-1; p < ayrik1.Split().Length ; p++)
+                {
+                    
+                    if ((ayrik2 == find1[p])||
+                        (ayrik2 == find1[p]+" "+find1[p+1])||
+                        (ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2])||
+                        (ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3])||
+                        (ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3]+" "+find1[p+4])||
+                        (ayrik2 == find1[p]+" "+find1[p+1]+" "+find1[p+2]+" "+find1[p+3]+" "+find1[p+4]+" "+find1[p+5]))
+                    {
+                        Console.WriteLine("DNA strand: "+ayrik1);
+                        Console.WriteLine("Codon sequence: "+ayrik2);
+                        Console.WriteLine("Starting from: "+q10);
+                        Console.WriteLine("Result: "+(p+1));
+                        check = true;
+                        continue;
+                        
+                    }
+                    step++;
+
+                }
+
+                if (check == false)
+                {
+                    Console.WriteLine("DNA strand: "+ayrik1);
+                    Console.WriteLine("Codon sequence: "+ayrik2);
+                    Console.WriteLine("Starting from: "+q10);
+                    Console.WriteLine("Result: "+-1+"(NOT FOUND!!)");
+                }
             
             
            
@@ -1118,8 +1190,302 @@ while (choose1 != 0)
             }
 
             string dnacase11 = repcounter[0];
+            		string[] find11 = new string[250];
+            ayrik1 = "";
+            ayrik2 = "";
+                string temp, ayrik3 = "";
+                int step11, q11;
+
+                Console.Write("How many codons do you want to reverse: ");
+                int ins11 = Convert.ToInt32(Console.ReadLine());
+                int t = ins11;
+
+                Console.Write("Which codon do you want to start from: ");
+                step = Convert.ToInt32(Console.ReadLine());
+                q11 = step;
+                
+                for (int i = 0; i < dnacase11.Length; i++)
+                {
+                    if (i % 3 == 0 && i>0)
+                    {
+                        ayrik1 += " " + dnacase11[i];
+                        continue;
+                    }
+                    ayrik1 += dnacase11[i];
+                }
+                
+                for (int l = 0; l < ayrik1.Split().Length; l++)
+                {
+                    find11[l] += ayrik1.Split()[l];
+                }
+
+                if (ins11 % 2 == 0)
+                {
+                    for (int p = step - 1; p < q11 + ins11 - 1; p++)
+                    {
+                        temp = find11[p];
+                        find11[p] = find11[q11 + ins11 - 2];
+                        find11[q11 + ins11 - 2] = temp;
+                        q11--;
+                    }
+                }
+                else
+                {
+                    for (int p = step - 1; p < q11 + ins11 - 2; p++)
+                    {
+                        temp = find11[p];
+                        find11[p] = find11[q11 + ins11 - 2];
+                        find11[q11 + ins11 - 2] = temp;
+                        q11--;
+                    }
+                }
+                
+                for (int i = 0; i < find11.Length; i++)
+                {
+                    ayrik2+=find11[i];
+                }
+                
+                for (int i = 0; i < ayrik2.Length; i++)
+                {
+                    if (i % 3 == 0 && i>0)
+                    {
+                        ayrik3 += " " + ayrik2[i];
+                        continue;
+                    }
+                    ayrik3 += ayrik2[i];
+                }
+                
+                Console.WriteLine("DNA strand (stage 1): "+ayrik1);
+                Console.WriteLine("Reverse "+ins11+" codons starting from codon "+step);
+                Console.WriteLine("DNA strand (stage 2): "+ayrik3);
             
             break;
+        
+        //Find the number of genes in DNA strand
+         case 12:
+            Console.Clear();
+            repcounter = new string[] { "" };
+            for (int i = 0; i < dna.Length; i++)
+            {
+
+                repcounter[0] = repcounter[0] + dna[i];
+                if (repcounter.Length == dna.Length)
+                {
+                    break;
+                }
+            }
+
+            string dnacase12 = repcounter[0];
+            char d12, e12, f12;
+            int i42 = 0, i52 = 1, i62 = 2;
+
+            string[] DNA22 = new string[100];
+
+            float NumberofCodons12 = dnacase12.Length / 3;
+            int numberofcodonS12 = Convert.ToInt32(NumberofCodons12);
+
+
+            for (int i = 0; i < numberofcodonS12; i++)
+            {
+                d12 = dnacase12[i42];
+                e12 = dnacase12[i52];
+                f12 = dnacase12[i62];
+                DNA22[i] = d12 + "" + e12 + "" + f12 + "";
+                i42 += 3;
+                i52 += 3;
+                i62 += 3;
+            }
+
+            for (int i = 0; i < numberofcodonS12; i++)
+            {
+                Console.Write(DNA22[i] + " ");
+            }
+
+            int Counterr = 0;
+            for (int j = 0; j < numberofcodonS12; j++)
+            {
+
+                if (DNA22[j] == "ATG")
+                {
+                    for (int k = j; k < numberofcodonS12; k++)
+                    {
+                        if (DNA22[k] == "TGA" || DNA22[k] == "TAG" || DNA22[k] == "TAA")
+                        {
+                            Counterr++;
+                            break;
+                
+                        }
+                    }
+                }
+
+            }
+
+            Console.WriteLine("\nNumber of genes : " + Counterr);
+            break;
+        
+        //Find the shortest gene in DNA
+        case 13:
+            Console.Clear();
+            repcounter = new string[] { "" };
+            for (int i = 0; i < dna.Length; i++)
+            {
+
+                repcounter[0] = repcounter[0] + dna[i];
+                if (repcounter.Length == dna.Length)
+                {
+                    break;
+                }
+            }
+
+            string dnacase13 = repcounter[0];
+            char[] dna55=dnacase13.ToCharArray();
+            string[] DNA13 = new string[20];
+            char a13, b13, c13;
+            int i55 = 0, i56 = 1, i57 = 2;
+            int numberofcodons13 = dna55.Length / 3;
+            for (int i = 0; i < numberofcodons13; i++)
+            {
+                a13= dna55[i55];
+                b13 = dna55[i56];
+                c13= dna55[i57];
+                DNA13[i] = a13 + "" + b13 + "" + c13 + "";
+                i55 += 3;
+                i56 += 3;
+                i57 += 3;
+            }
+            int shortestgene = int.MaxValue;
+            string[] dna31 = new string[20];
+            int count13 = 0;
+            int pozitionofgene = 0;
+            for (int i = 0; i < numberofcodons13; i++)
+            {
+                if (DNA13[i]=="ATG")
+                {
+                    for(int j =i; j <DNA13.Length-i ; j++)
+                    {
+                        if (DNA13[j] == "TAA" || DNA13[j] == "TGA" || DNA13[j]=="TAG")
+                        {
+                            count13++;
+                            break;
+                        }
+                        else
+                        {
+                            count13++;
+                        }
+                    }
+                    if(count13>shortestgene)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        shortestgene = count13;
+                        pozitionofgene = i+1;
+                    }
+                    count13 = 0;
+                }
+            }
+            for(int k=0;k<shortestgene;k++)
+            {
+                dna31[k] = DNA13[k+pozitionofgene-1];
+            }
+            Console.Write("Shortest gene: ");
+            for(int d=0;d<dna31.Length;d++)
+            {
+                Console.Write(dna31[d]+" ");
+            }
+            Console.WriteLine("\nNumber of codons in gene: " + shortestgene);
+            Console.WriteLine("Pozition of gene: " + pozitionofgene);
+            break;
+        
+        //Find the longest gene in DNA
+        case 14:
+            Console.Clear();
+            repcounter = new string[] { "" };
+            for (int i = 0; i < dna.Length; i++)
+            {
+
+                repcounter[0] = repcounter[0] + dna[i];
+                if (repcounter.Length == dna.Length)
+                {
+                    break;
+                }
+            }
+
+            string dnacase14 = repcounter[0];
+            		string[] find14 = new string[250];
+            ayrik1 = "";
+            ayrik3 = "";
+                string temp14, dnaL = "", dnaL1 = "";
+                int maxnum = 0, count14 = 0, count15 = 0, c14 = 1, c15 = 0;
+
+                
+                for (int i = 0; i < dnacase14.Length; i++)
+                {
+                    if (i % 3 == 0 && i>0)
+                    {
+                        ayrik1 += " " + dnacase14[i];
+                        continue;
+                    }
+                    ayrik1 += dnacase14[i];
+                }
+                
+                for (int l = 0; l < ayrik1.Split().Length; l++)
+                {
+                    find14[l] += ayrik1.Split()[l];
+                }
+
+                for (int t14 = 0; t14 < ayrik1.Split().Length; t14++)
+                {
+                    count14++;
+                    
+                    if (find14[t14] == "ATG")
+                    {
+                        dnaL += find14[t14];
+                        c14++;
+                        c15 = c14;
+                        continue;
+                    }
+                    c14++;
+                    dnaL += find14[t14];
+
+                    if (find14[t14] == "TAA" || find14[t14] == "TGA" || find14[t14] == "TAG")
+                    {
+                        if (maxnum < count14)
+                        {
+                            dnaL1 = dnaL;
+                            maxnum = count14;
+                            count14 = 0;
+                            dnaL = "";
+                            continue;
+
+                        }
+                        dnaL += find14[t14];
+                        count14 = 0;
+                        dnaL = "";
+                        continue;
+                    }
+
+                    
+                }
+                
+                for (int i = 0; i < dnaL1.Length; i++)
+                {
+                    if (i % 3 == 0 && i>0)
+                    {
+                        ayrik3 += " " + dnaL1[i];
+                        continue;
+                    }
+                    ayrik3 += dnaL1[i];
+                }
+                
+                Console.WriteLine("The original DNA Strand:"+" "+ayrik1);
+                Console.WriteLine("Longest gene: "+ayrik3);
+                Console.WriteLine("Number of codons in the gene: "+maxnum);
+                Console.WriteLine("Position of the gene: "+(c15-1));
+            
+            break;
+        
         
         //most repeated nucleotide sequences
         case 15:
