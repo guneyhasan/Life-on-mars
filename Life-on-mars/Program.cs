@@ -58,7 +58,7 @@ class Program
                 x1 = 0;
                 if (dnainputmod == 0)
                 {
-                    for (int i = 0; i <= dnainput.Length - 3; i = i + 3)
+                    for (int i = 0; i < dnainput.Length - 2; i = i + 3)
                     {
 
                         dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
@@ -75,6 +75,26 @@ class Program
                 }
                 else if(dnainputmod==2)
                 {
+                    for (int i = 0; i< dnainput.Length-4 ; i = i + 3)
+                    {
+
+                        dna[x1] = dnainput[i].ToString() + dnainput[i + 1].ToString() + dnainput[i + 2].ToString();
+                        x1++;
+
+
+                    }
+
+                    dna[x1] = dnainput[dnainput.Length - 1].ToString() + dnainput[dnainput.Length - 2].ToString();
+
+                    for (int i = 0; i < dna.Length; i++)
+                    {
+                        Console.Write(dna[i] + " ");
+
+                    }
+                }
+                
+                else if (dnainputmod == 1)
+                {
                     for (int i = 0; i< dnainput.Length-3 ; i = i + 3)
                     {
 
@@ -84,11 +104,13 @@ class Program
 
                     }
 
-                    for (int i = 0; i < dna.Length; i++)
-                    {
-                        Console.Write(dna[i] + " ");
+                    dna[x1] = dnainput[dnainput.Length - 1].ToString();
+                }
+                
+                for (int i = 0; i < dna.Length; i++)
+                {
+                    Console.Write(dna[i] + " ");
 
-                    }
                 }
 
                 break;
@@ -280,7 +302,7 @@ class Program
         }
 
         Console.WriteLine(""); 
-        Console.WriteLine("Please Choose a operation"); 
+        Console.WriteLine("Please Choose an Operation"); 
         Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5"); 
         Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11"); 
         Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 "); 
@@ -994,17 +1016,17 @@ class Program
                     int delcodon = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Please enter the number of which codon do you want to start to delete: ");
                     int delcodonth = Convert.ToInt32(Console.ReadLine());
-            
-                    Console.Write("The original DNA:"+ " ");
+                    Console.WriteLine(" ");
+                    Console.Write("The Original DNA:"+ " ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i]+ " ");
+                      if(dna[i]!=null)   Console.Write(dna[i]+ " ");
                     }
-                    Console.SetCursorPosition(0,6);
+                    Console.WriteLine(" ");
                     Console.Write("The Edited DNA:"+ " ");
                     for (int i = 0; i < delcodonth-1; i++)
                     {
-                        Console.Write(dna[i]+ " ");
+                      if(dna[i]!= null)  Console.Write(dna[i]+ " ");
                     }
                       
             
@@ -1014,7 +1036,7 @@ class Program
                         if (d + delcodon <= dna.Length - 1)
                         {
                             dna[d] = dna[d + delcodon];
-                            Console.Write(dna[d]+ " ");
+                           if(dna[d]!=null) Console.Write(dna[d]+ " ");
                     
                         }
                         if (d == dna.Length-1)
@@ -1023,7 +1045,7 @@ class Program
                         }
 
                     }
-                    Console.SetCursorPosition(0,6);
+                    
 
                     break;
         
@@ -1048,7 +1070,7 @@ class Program
                     Console.Write("The original DNA:"+ " ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i]+ " ");
+                       if(dna[i]!=null) Console.Write(dna[i]+ " ");
                     }
                     Console.SetCursorPosition(0,6);
             
@@ -1076,13 +1098,14 @@ class Program
                         dna[d] = dnatemp[d - insertcodon.Length];
 
                     }
-            
+                    Console.WriteLine(" ");
+                    Console.Write("The Edited DNA: ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i]+" ");
+                     if(dna[i]!=null)   Console.Write(dna[i]+" ");
                     }
 
-
+                    Console.WriteLine(" ");
             
 
                     break;
@@ -1495,43 +1518,60 @@ class Program
                 //most repeated nucleotide sequences
                 case 15:
                     Console.Clear();
-                    Console.WriteLine("Enter the number of nucletide: ");
-                    int nucletide = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
                     repcounter = new string[] { "" };
-                    ss = 0;
                     for (int i = 0; i < dna.Length; i++)
                     {
 
                         repcounter[0] = repcounter[0] + dna[i];
-                        Console.WriteLine(repcounter[0]);
                         if (repcounter.Length == dna.Length)
                         {
                             break;
                         }
                     }
 
-                    string repeatedletter = repcounter[0];
-                    string[] repeatedletterwithfrequencyarray = new string[repeatedletter.Length];
-                    char[] letterchararray = repeatedletter.ToCharArray();
-                    int
-                        q = 0;
-                    for (int i = 0; i < letterchararray.Length - 2; i++)
-                    {
-                        repeatedletterwithfrequencyarray[q] =
-                            (letterchararray[i] + letterchararray[i + 1] + letterchararray[i + 2]).ToString();
-                        Console.WriteLine(repeatedletterwithfrequencyarray[q]);
-                        q++;
-                    }
-
-                    for (int i = 0; i < repeatedletterwithfrequencyarray.Length - 1; i++)
-                    {
-                        if (repeatedletterwithfrequencyarray[i] == repeatedletterwithfrequencyarray[i + 1])
+                    string dnacase15tochar = repcounter[0];
+                    char[] dnacase15 = dnacase15tochar.ToCharArray();
+                    string[] dnacase15control = new string[300];
+                    Console.WriteLine("Enter the number of nucletide: ");
+                    int nucletide = Convert.ToInt32(Console.ReadLine());
+                    //dnachararray to string array for checking str
+                    int x15 = 0;
+                    
+                        for (int j = 0; j <= dnacase15.Length - nucletide; j++)
                         {
+                            if (x15 <= (dna.Length - 1) * 3)
+                            {
+                                for (int i = j; i < j + nucletide; i++)
+                                {
+                                    dnacase15control[x15] += dnacase15[i];
+                                    
+                                }
 
+                                x15++;
+                                
+                            }
+
+                            else break;
                         }
 
-
+                    for (int i = 0; i < dnacase15control.Length; i++)
+                    {
+                     if(dnacase15control[i]!=null)  Console.Write(dnacase15control[i]+" ");
                     }
+
+                    int counter = 0;
+                    for (int i = 0; i < dnacase15control.Length - 1; i = i + 2)
+                    {
+                        if (dnacase15control[i] != null&&dnacase15control[i+1]!=null)
+                        {
+                            if (dnacase15control[i] == dnacase15control[i + 1])
+                            {
+                                counter++;
+                            }
+                        }
+                    }
+                    Console.WriteLine(counter);
 
 
                     break;
@@ -1622,7 +1662,7 @@ class Program
             }
     
             Console.WriteLine(" ");
-            Console.WriteLine("Please Choose a operation");
+            Console.WriteLine("Please Choose an Operation");
             Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5");
             Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11");
             Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 ");
