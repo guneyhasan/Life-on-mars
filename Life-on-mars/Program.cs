@@ -90,6 +90,10 @@ class Program
                 dnainput = Console.ReadLine();
                 int dnainputmod = dnainput.Length % 3;
                 dnalngth = dna.Length;
+                for (int i = 0; i < dna.Length; i++)
+                {
+                    dna[i] = null;
+                }
                 x1 = 0;
                 if (dnainputmod == 0)
                 {
@@ -101,12 +105,16 @@ class Program
 
 
                     }
-
+                    Console.Write("DNA Strand: ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i] + " ");
-
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
                     }
+
+                    Console.WriteLine(" ");
                 }
                 else if(dnainputmod==2)
                 {
@@ -120,12 +128,16 @@ class Program
                     }
 
                     dna[x1] = dnainput[dnainput.Length - 1].ToString() + dnainput[dnainput.Length - 2].ToString();
-
+                    Console.Write("DNA Strand: ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i] + " ");
-
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
                     }
+
+                    Console.WriteLine(" ");
                 }
                 
                 else if (dnainputmod == 1)
@@ -140,13 +152,20 @@ class Program
                     }
 
                     dna[x1] = dnainput[dnainput.Length - 1].ToString();
+                    
+                    Console.Write("DNA Strand: ");
+                    for (int i = 0; i < dna.Length; i++)
+                    {
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
+                    }
+
+                    Console.WriteLine(" ");
                 }
                 
-                for (int i = 0; i < dna.Length; i++)
-                {
-                    Console.Write(dna[i] + " ");
-
-                }
+                
 
                 break;
     
@@ -400,14 +419,18 @@ class Program
 
                 }
                 break;
-    
-                //input dna 
-                 case 2:
+                 
+                 //input dna 
+                case 2:
                 Console.Clear();
                 Console.WriteLine("Please Enter the Dna String"); 
                 dnainput = Console.ReadLine();
                 int dnainputmod = dnainput.Length % 3;
                 dnalngth = dna.Length;
+                for (int i = 0; i < dna.Length; i++)
+                {
+                    dna[i] = null;
+                }
                 x1 = 0;
                 if (dnainputmod == 0)
                 {
@@ -419,12 +442,16 @@ class Program
 
 
                     }
-
+                    Console.Write("DNA Strand: ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i] + " ");
-
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
                     }
+
+                    Console.WriteLine(" ");
                 }
                 else if(dnainputmod==2)
                 {
@@ -438,12 +465,16 @@ class Program
                     }
 
                     dna[x1] = dnainput[dnainput.Length - 1].ToString() + dnainput[dnainput.Length - 2].ToString();
-
+                    Console.Write("DNA Strand: ");
                     for (int i = 0; i < dna.Length; i++)
                     {
-                        Console.Write(dna[i] + " ");
-
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
                     }
+
+                    Console.WriteLine(" ");
                 }
                 
                 else if (dnainputmod == 1)
@@ -458,16 +489,23 @@ class Program
                     }
 
                     dna[x1] = dnainput[dnainput.Length - 1].ToString();
+                    
+                    Console.Write("DNA Strand: ");
+                    for (int i = 0; i < dna.Length; i++)
+                    {
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
+                    }
+
+                    Console.WriteLine(" ");
                 }
                 
-                for (int i = 0; i < dna.Length; i++)
-                {
-                    Console.Write(dna[i] + " ");
-
-                }
+                
 
                 break;
-    
+                
                 //random dna
                 case 3: 
                 Console.WriteLine("Please choose way of the random: ");
@@ -1579,6 +1617,15 @@ class Program
                     string dnacase15tochar = repcounter[0];
                     char[] dnacase15 = dnacase15tochar.ToCharArray();
                     string[] dnacase15control = new string[300];
+                    Console.Write("DNA Strand: ");
+                    for (int i = 0; i < dna.Length; i++)
+                    {
+                        if (dna[i] != null)
+                        {
+                            Console.Write(dna[i] + " ");
+                        }
+                    }
+                    Console.WriteLine(" ");
                     Console.WriteLine("Enter the number of nucletide: ");
                     int nucletide = Convert.ToInt32(Console.ReadLine());
                     //dnachararray to string array for checking str
@@ -1601,25 +1648,51 @@ class Program
                             else break;
                         }
 
+                    int temprep = 0;
+                    string repeatstring = "";
+                    int counter = -1;
+
                     for (int i = 0; i < dnacase15control.Length; i++)
                     {
                      if(dnacase15control[i]!=null)  Console.Write(dnacase15control[i]+" ");
                     }
 
-                    int counter = 0;
+                   
                     for (int i = 0; i < dnacase15control.Length - 1; i = i + 2)
                     {
                         if (dnacase15control[i] != null)
                         {
-                            if (dnacase15control[i] == dnacase15control[i + 1])
+                            for (int j = 1; j < dnacase15control.Length; j++)
                             {
-                                counter++;
+                                if (dnacase15control[i] == dnacase15control[j])
+                                {
+
+                                    temprep++;
+
+                                }
+
                             }
+
+                            if (counter < temprep)
+                            {
+                                if (i == 0)
+                                {
+                                    counter = temprep + 1;
+                                }
+                                else
+                                {
+                                    counter = temprep;
+                                }
+                                repeatstring = dnacase15control[i].ToString();
+                            }
+
+                            temprep = 0;
                         }
                     }
-                    Console.WriteLine(counter);
-
-
+                    Console.WriteLine(" ");
+                    Console.WriteLine("Most Repeeated sequence: "+repeatstring);
+                    Console.WriteLine("Frequency: "+counter);
+                    
                     break;
         
                 // hydrogen bond statistics
