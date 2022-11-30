@@ -329,15 +329,31 @@ class Program
                         rndmdna = new Random(); 
                     
                         //dna random
-                    
+                        string[] dnatemp02=new string[100];
                         words = new string[]{ "A", "T", "G", "C" };
                         agen = rndmdna.Next(2, 8); 
                         acodon = rndmdna.Next(3, 9);
                         for (int i = 0; i < agen * acodon; i++)
                         {
                             int letterrandom = rndmdna.Next(0, 3);
-                            dna[i] = words[letterrandom];
+                            dnatemp02[i] = words[letterrandom];
                         }
+
+                        int ax = 0;
+                        for (int i = 0; i < dnatemp02.Length - 2; i = i + 3)
+                        {
+                            dna[ax] = dnatemp02[i] + dnatemp02[i + 1] + dnatemp02[i + 2];
+                            ax++;
+                        }
+                        Console.Write("Random Dna: ");
+                        for (int i = 0; i < dna.Length; i++)
+                        {
+                            if (dna[i] != null)
+                            {
+                                Console.Write(dna[i]+" ");
+                            }
+                        }
+                        Console.WriteLine(" ");
                         break;
                 }
                 break;
@@ -516,7 +532,8 @@ class Program
 
                 switch (choosecase)
                 {
-                    case 1:Console.Clear();
+                    case 1:
+                        Console.Clear();
                         Random rndmdna = new Random();
                         string[] words = { "A", "T", "G", "C" };
                         //dna random
@@ -667,15 +684,31 @@ class Program
                         rndmdna = new Random(); 
                     
                         //dna random
-                    
+                        string[] dnatemp02=new string[100];
                         words = new string[]{ "A", "T", "G", "C" };
                         agen = rndmdna.Next(2, 8); 
                         acodon = rndmdna.Next(3, 9);
                         for (int i = 0; i < agen * acodon; i++)
                         {
                             int letterrandom = rndmdna.Next(0, 3);
-                            dna[i] = words[letterrandom];
+                            dnatemp02[i] = words[letterrandom];
                         }
+
+                        int ax = 0;
+                        for (int i = 0; i < dnatemp02.Length - 2; i = i + 3)
+                        {
+                            dna[ax] = dnatemp02[i] + dnatemp02[i + 1] + dnatemp02[i + 2];
+                            ax++;
+                        }
+                        Console.Write("Random Dna: ");
+                        for (int i = 0; i < dna.Length; i++)
+                        {
+                            if (dna[i] != null)
+                            {
+                                Console.Write(dna[i]+" ");
+                            }
+                        }
+                        Console.WriteLine(" ");
                         break;
                 }
                 break;
@@ -1781,6 +1814,524 @@ class Program
                     Console.WriteLine("Number of pairing with 2-hydrogen bonds:" + (countA + countT));
                     Console.WriteLine("Number of pairing with 3-hydrogen bonds:" + (countG + countC));
                     Console.WriteLine("Number of hydrogen bonds:" + (hydrogena + hydrogent + hydrogenc + hydrogeng));
+                    break;
+                
+                case 17:
+                    Console.Clear();
+                    repcounter = new string[] { "" };
+                   
+                    for (int i = 0; i < dna.Length; i++)
+                    {
+                        
+                        repcounter[0] = repcounter[0] + dna[i];
+                        if (repcounter.Length == dna.Length)
+                        {
+                            break;
+                        }
+                    }
+
+                    string dnacase17 = repcounter[0];
+                    
+                    
+                    for (int ğ = 1; ğ < 11; ğ++)
+                    {
+                        Console.WriteLine("Generation" +" "+ ğ);
+                        if (ğ == 1)
+                        {
+                            Console.Write("Blob 1: "+gendername+" ");
+                            for (int i = 0; i < dna.Length; i++)
+                            {
+                                if (dna[i] != null)
+                                {
+                                    Console.Write(dna[i] + " ");
+                                }
+                            }
+
+                        }
+
+                        else
+                        {
+                            Console.Write("Blob 1: ");
+                            for (int i = 0; i < dnacase17.Length - 2; i = i + 3)
+                            {
+                                Console.Write(dnacase17[i].ToString()+dnacase17[i+1].ToString()+dnacase17[i+2].ToString()+" ");
+                            }
+                            
+                        }
+                        Console.WriteLine("");
+                       
+                        char[] dna17char = new char[dnacase17.Length];
+                        for (int i = 0; i < dnacase17.Length; i++)
+                        {
+                            dna17char[i] = dnacase17[i];
+                        }
+                        string[] DNA17 = new string[100];
+                        char a, b, c;
+                        int i17 = 0, i27 = 1, i37 = 2;
+                        int numberofcodons17 = dna17char.Length / 3;
+                        for (int i = 0; i < numberofcodons17; i++)
+                        {
+                            a = dna17char[i17];
+                            b = dna17char[i27];
+                            c = dna17char[i37];
+                            DNA17[i] = a + "" + b + "" + c + "";
+                            i17 += 3;
+                            i27 += 3;
+                            i37 += 3;
+                        }
+                        
+                        //blob 2 dna random
+                        
+                        
+                        Random rndmdna = new Random();
+                        string[] words = { "A", "T", "G", "C" };
+                        //dna random
+                        int agen = rndmdna.Next(1, 7);
+                        int acodon = rndmdna.Next(1, 7);
+                        int blob = agen * acodon;
+                        while (blob % 3 != 0)
+                        {
+                            agen = rndmdna.Next(1, 7);
+                            acodon = rndmdna.Next(1, 7);
+                            blob = agen * acodon;
+
+                        }
+
+                        randomdna = new string[ 3*blob ];
+                        for (int i = 0; i < 3*blob; i++)
+                        {
+                            int b17 = rndmdna.Next(0, 4);
+                            randomdna[i] = words[b17];
+
+
+                        }
+
+                        string[] splitteddna = new string[blob];
+                        int x = 0;
+
+                        while (x <blob)
+                        {
+                            for (int i = 0; i <(3*blob)-2; i = i + 3)
+                            {
+
+                                splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
+                                while (splitteddna[x] == "ATG" || splitteddna[x] == "TAG" || splitteddna[x] == "TAA" ||
+                                       splitteddna[x] == "TGA")
+                                {
+                                    int bb = rndmdna.Next(0, 4);
+                                    int cc = rndmdna.Next(0, 4);
+                                    int d17 = rndmdna.Next(0, 4);
+                                    randomdna[i] = words[bb];
+                                    randomdna[i + 1] = words[cc];
+                                    randomdna[i + 2] = words[d17];
+                                    splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
+                                        
+
+                                }
+                                
+                                x++;
+
+                            }
+                        }
+                       
+                        //gender random
+
+                        string[] gender = new string[4];
+                        int c17 = rndmdna.Next(0, 6);
+                        switch (c17)
+                        {
+                            case 0:
+                                gender[0] = "ATG";
+                                gender[1] = "AAA";
+                                gender[2] = "TTT";
+                                gender[3] = "TAG";
+                                gendername = "Female";
+                                break;
+                            case 1:
+                                gender[0] = "ATG";
+                                gender[1] = "TTT";
+                                gender[2] = "AAA";
+                                gender[3] = "TAG";
+                                gendername = "Female";
+                                break;
+                            case 2:
+                                gender[0] = "ATG";
+                                gender[1] = "TTT";
+                                gender[2] = "TTT";
+                                gender[3] = "TAG";
+                                gendername = "Female";
+                                break;
+                            case 3:
+                                gender[0] = "ATG";
+                                gender[1] = "TTT";
+                                gender[2] = "CCC";
+                                gender[3] = "TAG";
+                                gendername = "Male";
+                                break;
+                            case 4:
+                                gender[0] = "ATG";
+                                gender[1] = "GGG";
+                                gender[2] = "AAA";
+                                gender[3] = "TAG";
+                                gendername = "Male";
+                                break;
+                            case 5:
+                                gender[0] = "ATG";
+                                gender[1] = "GGG";
+                                gender[2] = "TTT";
+                                gender[3] = "TAG";
+                                gendername = "Male";
+                                break;
+                        }
+
+
+                        string[] dna3 = new String [1000];
+                        
+                        //gender to main array
+                        for (int qqq = 0; qqq <= 3; qqq++)
+                        {
+                            dna3[qqq] = gender[qqq];
+                            
+                        }
+
+                        
+
+                        string[] stopcodon = new string[] { "TAA", "TGA", "TAG" };
+                        int qq = 0;
+                        
+
+                        //main array with start and stop codons
+                        for (int q1 = 4; q1 <splitteddna.Length+4+(2*agen) ; q1++)
+                        {
+                            if ( q1 == 4 || q1 == 4 + acodon + 2 || q1 == 4 + 2 * acodon + 4 || q1 == 4 + 3 * acodon + 6 ||
+                                 q1 == 4 + 4 * acodon + 8 || q1 == 4 + 5 * acodon + 10 )
+                                {
+                                    dna3[q1] = "ATG";
+                                    
+                                    
+                                }
+                                
+                            else if ( q1 == 4 + acodon +1 || q1 == 4 + 2 * acodon +3|| q1 == 4 + 3 * acodon + 5 ||
+                                          q1 == 4 + 4 * acodon + 7 || q1 == 4 + 5 * acodon + 9 || q1 == 4 + 6 * acodon + 11 )
+                            { 
+                                    int cdnrndm = rndmdna.Next(0, 3);
+                                    dna3[q1] = stopcodon[cdnrndm];
+                                    
+                                    
+
+                            }
+                            else if (qq < splitteddna.Length)
+                            {
+                                dna3[q1] = splitteddna[qq]; 
+                                 
+                                qq++;
+                            }
+                        }
+                        Console.WriteLine(" ");
+                        
+                        string[] repcounter1 = new string[] { "" };
+                        for (int i = 0; i < dna3.Length; i++)
+                        {
+
+                            repcounter1[0] = repcounter1[0] + dna3[i];
+                            if (repcounter1.Length == dna3.Length)
+                            {
+                                break;
+                            }
+                        }
+                        Console.WriteLine("Choose Blob 2:");
+                        Console.WriteLine("1-Random");
+                        Console.WriteLine("2-Input");
+                        int chooseblob = Convert.ToInt16(Console.ReadLine());
+                        string dna311 = "";
+                        //choosing blob 2
+                        Console.Clear();
+                        Console.WriteLine("Generation" +" "+ ğ);
+                        if (ğ == 1)
+                        {
+                            Console.Write("Blob 1: "+gendername+" ");
+                            for (int i = 0; i < dna.Length; i++)
+                            {
+                                if (dna[i] != null)
+                                {
+                                    Console.Write(dna[i] + " ");
+                                }
+                            }
+
+                        }
+
+                        else
+                        {
+                            Console.Write("Blob 1: ");
+                            for (int i = 0; i < dnacase17.Length - 2; i = i + 3)
+                            {
+                                Console.Write(dnacase17[i].ToString()+dnacase17[i+1].ToString()+dnacase17[i+2].ToString()+" ");
+                            }
+
+                            
+                        }
+                        Console.WriteLine(" ");    
+                        switch (chooseblob)
+                        {
+                            case 1: 
+                                Console.Write("Blob 2:"+" ");
+                                for (int i = 0; i < dna3.Length; i++)
+                                {
+                                    if (dna3[i] != null)
+                                    {
+                                        Console.Write(dna3[i] + " ");
+                                    }
+                                }
+                                Console.WriteLine(" ");
+                                dna311 = repcounter1[0];
+                                break;
+                            case 2:
+                                Console.WriteLine("Please Enter The DNA Strand of Blob 2");
+                                dna311 = Console.ReadLine();
+                                break;
+                        }
+                                       
+                        Console.WriteLine("");
+                        char[] dna4 = new char[dna311.Length];
+                        for (int i = 0; i < dna311.Length; i++)
+                        {
+                            dna4[i] = dna311[i];
+                        }
+                        string[] DNA27 = new string[100];
+                        char d, e, f;
+                        int j1 = 0, j2 = 1, j3 = 2;
+                        int numberofcodons2 = dna4.Length / 3;
+                        for (int k = 0; k < numberofcodons2; k++)
+                        {
+                            d = dna4[j1];
+                            e = dna4[j2];
+                            f = dna4[j3];
+                            DNA27[k] = d + "" + e + "" + f + "";
+                            j1 += 3;
+                            j2 += 3;
+                            j3 += 3;
+                        }
+                        string[] DNA3 = new string[100];
+                        DNA3[0] = DNA27[0];
+                        for (int y = 1; y < 4; y++)
+                        {
+                            if (y % 2 == 1)
+                            {
+                                DNA3[y] = DNA17[y];
+                            }
+                            else
+                            {
+                                DNA3[y] = DNA27[y];
+                            }
+                        }
+                        string ee = "";
+                        for (int l = 0; l < DNA3.Length; l++)
+                        {
+                            ee += DNA3[l];
+                        }
+                        DNA3[0] = ee;
+                        string[] DNA1sgenes = new string[numberofcodons17];
+                        int u = 0;
+                        string tt = "";
+                        int numberofgene = 0;
+                        for (int g = 0; g < DNA17.Length; g++)
+                        {
+                            if (DNA17[g] == "ATG")
+                            {
+                                tt += Convert.ToString(DNA17[g]);
+                            }
+                            else if (DNA17[g] != "ATG" & DNA17[g] != "TAG" & DNA17[g] != "TGA" & DNA17[g] != "TAA")
+                            {
+                                tt += Convert.ToString(DNA17[g]);
+                            }
+                            else if (DNA17[g] == "TAG" || DNA17[g] == "TGA" || DNA17[g] == "TAA")
+                            {
+                                tt = tt + Convert.ToString(DNA17[g]);
+                                DNA1sgenes[u] = tt;
+                                u++;
+                                tt = "";
+                                numberofgene++;
+                            }
+                        }
+                        string[] DNA2sgenes = new string[numberofcodons2];
+                        int uu = 0;
+                        string ttt = "";
+                        int numberofgene2 = 0;
+                        for (int g = 0; g < DNA27.Length; g++)
+                        {
+                            if (DNA27[g] == "ATG")
+                            {
+                                ttt += Convert.ToString(DNA27[g]);
+                            }
+                            else if (DNA27[g] != "ATG" & DNA27[g] != "TAG" & DNA27[g] != "TGA" & DNA27[g] != "TAA")
+                            {
+                                ttt += Convert.ToString(DNA27[g]);
+                            }
+                            else if (DNA27[g] == "TAG" || DNA27[g] == "TGA" || DNA27[g] == "TAA")
+                            {
+                                ttt = ttt + Convert.ToString(DNA27[g]);
+                                DNA2sgenes[uu] = ttt;
+                                uu++;
+                                ttt = "";
+                                numberofgene2++;
+                            }
+                        }
+                        int p = 1;
+                        if (numberofgene < numberofgene2)
+                        {
+                            for (int o = 1; o < numberofgene; o++)
+                            {
+                                if (o % 2 == 1)
+                                {
+                                    DNA3[p] = DNA1sgenes[o];
+                                    p++;
+                                }
+                                else
+                                {
+                                    DNA3[p] = DNA2sgenes[o];
+                                    p++;
+                                }
+                            }
+                            for (int oo = numberofgene; oo < numberofgene2; oo++)
+                            {
+                                DNA3[p] = DNA2sgenes[oo];
+                                p++;
+                            }
+                        }
+                        else if (numberofgene > numberofgene2)
+                        {
+                            for (int o = 1; o < numberofgene2; o++)
+                            {
+                                if (o % 2 == 1)
+                                {
+                                    DNA3[p] = DNA1sgenes[o];
+                                    p++;
+                                }
+                                else
+                                {
+                                    DNA3[p] = DNA2sgenes[o];
+                                    p++;
+                                }
+                            }
+                            for (int oo = numberofgene2; oo < numberofgene; oo++)
+                            {
+                                DNA3[p] = DNA1sgenes[oo];
+                                p++;
+                            }
+                        }
+                        else
+                        {
+                            for (int o = 1; o < numberofgene; o++)
+                            {
+                                if (o % 2 == 1)
+                                {
+                                    DNA3[p] = DNA1sgenes[o];
+                                    p++;
+                                }
+                                else
+                                {
+                                    DNA3[p] = DNA2sgenes[o];
+                                    p++;
+                                }
+                            }
+                        }
+                        string eee = "";
+                        for (int h = 0; h < DNA3.Length; h++)
+                        {
+                            eee += DNA3[h];
+                        }
+                        char[] eeee = new char[300];
+                        for (int i = 0; i < eee.Length; i++)
+                        {
+                            eeee[i] = eee[i];
+                        }
+                        string[] DNAnewborn = new string[100];
+                        char z, n, m;
+                        int k1 = 0, k2 = 1, k3 = 2;
+                        int numberofcodons3 = eeee.Length / 3;
+                        for (int i = 0; i < numberofcodons3; i++)
+                        {
+                            z = eeee[k1];
+                            n = eeee[k2];
+                            m = eeee[k3];
+                            DNAnewborn[i] = z + "" + n + "" + m + "";
+                            k1 += 3;
+                            k2 += 3;
+                            k3 += 3;
+                        }
+                        double count17 = 0;
+                        int count27 = 0;
+                        for (int i = 0; i < DNAnewborn.Length-2; i++)
+                        {
+                            if ((DNAnewborn[i] == "GCC" || DNAnewborn[i] == "GGC" || DNAnewborn[i] == "GCG" || DNAnewborn[i] == "CGG" || DNAnewborn[i] == "CGC" || DNAnewborn[i] == "CCG" || DNAnewborn[i] == "GGG" || DNAnewborn[i] == "CCC") & (DNAnewborn[i + 1] == "GCC" || DNAnewborn[i + 1] == "GGC" || DNAnewborn[i + 1] == "GCG" || DNAnewborn[i + 1] == "CGG" || DNAnewborn[i + 1] == "CGC" || DNAnewborn[i + 1] == "CCG" || DNAnewborn[i + 1] == "GGG" || DNAnewborn[i + 1] == "CCC") & (DNAnewborn[i + 2] == "GCC" || DNAnewborn[i + 2] == "GGC" || DNAnewborn[i + 2] == "GCG" || DNAnewborn[i + 2] == "CGG" || DNAnewborn[i + 2] == "CGC" || DNAnewborn[i + 2] == "CCG" || DNAnewborn[i + 2] == "GGG" || DNAnewborn[i + 2] == "CCC"))
+                            {
+                                count17 += 3;
+                                count27 = 0;
+                                for (int j = i + 3; j < DNAnewborn.Length; j++)
+                                {
+                                    if (DNAnewborn[j] == "GCC" || DNAnewborn[j] == "GGC" || DNAnewborn[j] == "GCG" || DNAnewborn[j] == "CGG" || DNAnewborn[j] == "CGC" || DNAnewborn[j] == "CCG" || DNAnewborn[j] == "GGG" || DNAnewborn[j] == "CCC")
+                                    {
+                                        count27++;
+                                        count17++;
+                                    }
+                                    else
+                                    {
+                                        
+                                        break;
+                                    }
+                                }
+                                i = i + 3 + count27;
+                            }
+                        }
+                        double count3=0;
+                        string[] aa17 = new string[] {"GCT","GCC","GCA","GCG","CGT","CGC","CGA","CGG","AGA","AGG","AAT","AAC","GAT","GAC","TGT","TGC","CAA","CAG","GAA","GAG","GGT","GGC","GGA","GGG",
+                         "CAT","CAC","ATT","ATC","ATA","CTT","CTC","CTA","CTG","TTA","TTG","AAG","AAA","ATG","TTT","TTC","CCT","CCC","CCA","CCG","TCT","TCC","TCA","TCG","AGT","AGC","ACT","ACC","ACA","ACG","TGG","TAT","TAC","GTT","GTC","GTA","GTG","TAA","TGA","TAG"};
+                        for(int i= 0; i < DNAnewborn.Length; i++)
+                        {
+                            for(int j=0;j<aa17.Length;j++)
+                            {
+                                if (DNAnewborn[i] == aa17[j])
+                                {
+                                    count3++;
+                                }
+                            }
+                        }
+                        Console.WriteLine("NEWBORN");
+                        for(int iotuz=0;iotuz<DNAnewborn.Length;iotuz++)
+                        {
+
+                            if (DNAnewborn[iotuz] != null)
+                            {
+                                Console.Write(DNAnewborn[iotuz] + " ");
+                            }
+
+
+                        }
+                        Console.WriteLine("");
+                        if (((count17 /count3) * 100) > 10)
+                        {
+                            Console.WriteLine("The newborn died.");
+                            break;
+                        }
+                        else
+                        {
+                             DNA17 = new string[DNAnewborn.Length];
+                            
+                            for (int jj = 0; jj < DNAnewborn.Length; jj++)
+                            {
+                                DNA17[jj] = DNAnewborn[jj];
+                            }
+                            
+                        }
+                        string[] dnatemp17 = new string[1];
+                        for (int ii = 0; ii < DNA17.Length; ii++)
+                        {
+                            dnatemp17[0] = dnatemp17[0] + DNA17[ii];
+                        }
+                        dnacase17 = dnatemp17[0];
+                        Console.WriteLine("");
+                        Console.ReadKey();
+                    }
                     break;
         
             }
