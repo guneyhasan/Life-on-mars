@@ -4,6 +4,7 @@ class Program
 {
     public static void Main(string[] args)
     {
+        bool tester3 = true, tester4 = true, tester5 = true, tester2 = true, tester1 = true, tester = true,test = false;
         double choose;
 
         Console.WriteLine("Welcome");
@@ -242,42 +243,42 @@ class Program
                                 gender[1] = "AAA";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 1:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 2:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 3:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "CCC";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "XY";
                                 break;
                             case 4:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "YX";
                                 break;
                             case 5:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "YX";
                                 break;
                         }
 
@@ -596,42 +597,42 @@ class Program
                                 gender[1] = "AAA";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 1:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 2:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername = "XX";
                                 break;
                             case 3:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "CCC";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "XY";
                                 break;
                             case 4:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "YX";
                                 break;
                             case 5:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername = "YX";
                                 break;
                         }
 
@@ -756,7 +757,7 @@ class Program
 
                     if (dnacase4.Length % 3 != 0)
                     {
-                        Console.Write("Incompleted codons won't be shown.");
+                        Console.WriteLine("Incompleted codons won't be shown.");
                     }
 
                     int count;
@@ -773,7 +774,7 @@ class Program
                     }
 
 
-                    bool tester3 = true, tester4 = true, tester5 = true;
+
                     int length = (dnacase4.Length / 3) - 1;
                     if (dnacase4.Length % 3 != 0)
                     {
@@ -793,20 +794,38 @@ class Program
                     if (DNA1[0] != "ATG" || DNA1[1] == "ATG" ||
                         DNA1[length] != "TGA" && DNA1[length] != "TAG" && DNA1[length] != "TAA")
                     {
-                        Console.WriteLine("Gene structure error!");
+                        Console.WriteLine("\nGene structure error!");
                         tester4 = false;
+                    }
+                  
+                    for (int k = 0; k < numberofcodons1; k++)
+                    {
+                        if (k == numberofcodons1-1)
+                        {
+                            Console.WriteLine("");
+                        }
+                        else if ((DNA1[k] == "TGA" || DNA1[k] == "TAG" || DNA1[k] == "TAA") && DNA1[k + 1] != "ATG" && tester4 == true)
+                        {
+                            Console.WriteLine("\nGene structure error!");
+                            tester4 = false;
+                        }
                     }
 
                     for (int i = 0; i < numberofcodons1; i++)
                     {
                         if (DNA1[i] == "ATG" && tester3 == true && tester4 == true)
                         {
-                            if (DNA1[i + 1] == "TGA" || DNA1[i + 1] == "TAG" || DNA1[i + 1] == "TAA")
+                            if ((DNA1[i + 1] == "TGA" || DNA1[i + 1] == "TAG" || DNA1[i + 1] == "TAA") && tester3 == true && tester4 == true )
                             {
-                                Console.WriteLine("NOT BLOB,but OK!");
+                                
                                 tester5 = false;
                             }
                         }
+                    }
+
+                    if (tester5 == false)
+                    {
+                        Console.WriteLine("Not BLOB,but OK!");
                     }
 
 
@@ -816,6 +835,8 @@ class Program
                         Console.WriteLine("Gene Structure is OK!");
                     }
 
+
+                    test = true;
                     break;
         
                 // check dna of blob organism
@@ -825,7 +846,7 @@ class Program
 
                     for (int i = 0; i < dna.Length; i++)
                     {
-
+                         
                         repcounter[0] = repcounter[0] + dna[i];
                         if (repcounter.Length == dna.Length)
                         {
@@ -838,7 +859,7 @@ class Program
                     char d1, e1, f1;
                     int i4 = 0, i5 = 1, i6 = 2;
 
-                    string[] DNA2 = new string[100];
+                    string[] DNA2 = new string[150];
 
                     float NumberofCodons = dnacase5.Length / 3;
                     int numberofcodonS = Convert.ToInt32(NumberofCodons);
@@ -867,9 +888,7 @@ class Program
                         Console.WriteLine("Incompleted codons won't be shown.");
                     }
 
-                    bool tester = true;
-                    bool tester1 = true;
-                    bool tester2 = true;
+
                     int count1 = 0, count2 = 0;
                     for (int i = 0; i < numberofcodonS; i++)
                     {
@@ -882,7 +901,7 @@ class Program
                         {
                             count2++;
                         }
-                 
+
                     }
 
 
@@ -893,12 +912,19 @@ class Program
                         {
                             if (DNA2[i + 1] == "TAG" || DNA2[i + 1] == "TGA" || DNA2[i + 1] == "TAA")
                             {
-                                Console.WriteLine("Number of codons error.");
+                                
                                 tester = false;
                             }
 
                         }
                     }
+
+
+                    if (tester == false)
+                    {
+                        Console.WriteLine("Number of codons error!");
+                    }
+
 
 
                     if (DNA2[0] == "ATG")
@@ -935,7 +961,18 @@ class Program
                         tester1 = false;
                     }
 
-                    if (tester == true && tester1 == true && tester2 == true)
+
+                    if ((tester == true && tester1 == true && tester2 == true)&& (test == false))
+                    {
+                        Console.WriteLine("You didn't check the gene structure!");
+                    }
+
+                    else if ((tester == true&& tester1 == true && tester2 == true ) && (tester3 == false || tester4 == false || tester5 == false))
+                    {
+                        Console.WriteLine("Gene structure is not valid.");
+                    }
+
+                    else if (tester == true && tester1 == true && tester2 == true&& tester5 == true && tester4 == true && tester3 == true)
                     {
                         Console.WriteLine("BLOB is OK!");
                     }
@@ -1499,7 +1536,7 @@ class Program
                         i57 += 3;
                     }
                     int shortestgene = int.MaxValue;
-                    string[] dna31 = new string[20];
+                    string[] dna31 = new string[250];
                     int count13 = 0;
                     int pozitionofgene = 0;
                     for (int i = 0; i < numberofcodons13; i++)
@@ -1816,6 +1853,7 @@ class Program
                     Console.WriteLine("Number of hydrogen bonds:" + (hydrogena + hydrogent + hydrogenc + hydrogeng));
                     break;
                 
+                //new generations
                 case 17:
                     Console.Clear();
                     repcounter = new string[] { "" };
@@ -1832,13 +1870,15 @@ class Program
 
                     string dnacase17 = repcounter[0];
                     
-                    
+                    string gender1 = "";
+                    string gender2 = "";
                     for (int ğ = 1; ğ < 11; ğ++)
                     {
+                        
                         Console.WriteLine("Generation" +" "+ ğ);
                         if (ğ == 1)
                         {
-                            Console.Write("Blob 1: "+gendername+" ");
+                            Console.Write("Blob 1 "+gendername+": ");
                             for (int i = 0; i < dna.Length; i++)
                             {
                                 if (dna[i] != null)
@@ -1934,10 +1974,12 @@ class Program
                             }
                         }
                        
-                        //gender random
-
+                        //gender random 
+                        string gendername2 = "";
                         string[] gender = new string[4];
-                        int c17 = rndmdna.Next(0, 6);
+                        do
+                        {
+                            int c17 = rndmdna.Next(0, 6);
                         switch (c17)
                         {
                             case 0:
@@ -1945,45 +1987,48 @@ class Program
                                 gender[1] = "AAA";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername2 = "XX";
                                 break;
                             case 1:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername2 = "XX";
                                 break;
                             case 2:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Female";
+                                gendername2 = "XX";
                                 break;
                             case 3:
                                 gender[0] = "ATG";
                                 gender[1] = "TTT";
                                 gender[2] = "CCC";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername2 = "XY";
                                 break;
                             case 4:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "AAA";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername2 = "YX";
                                 break;
                             case 5:
                                 gender[0] = "ATG";
                                 gender[1] = "GGG";
                                 gender[2] = "TTT";
                                 gender[3] = "TAG";
-                                gendername = "Male";
+                                gendername2 = "YX";
                                 break;
                         }
 
+                        }while (gendername2 == "XX" && gendername=="XX"||gendername2 == "YX" && gendername=="YX"||gendername2 == "YX" && gendername=="XY"||gendername2 == "XY" && gendername=="YX"||gendername2 == "XY" && gendername=="XY"||    gendername2 == "XX" && gender1=="X"&&gender2=="X"||gendername2 == "YX" && gender1=="Y"&&gender2=="X"||gendername2 == "YX" && gender1=="X"&&gender2=="Y"||gendername2 == "XY" && gender1=="Y"&&gender2=="X"||gendername2 == "XY" && gender1=="X"&&gender2=="Y"); 
+
+                        
 
                         string[] dna3 = new String [1000];
                         
@@ -2039,6 +2084,7 @@ class Program
                                 break;
                             }
                         }
+                        
                         Console.WriteLine("Choose Blob 2:");
                         Console.WriteLine("1-Random");
                         Console.WriteLine("2-Input");
@@ -2049,7 +2095,24 @@ class Program
                         Console.WriteLine("Generation" +" "+ ğ);
                         if (ğ == 1)
                         {
-                            Console.Write("Blob 1: "+gendername+" ");
+                            if (dna[1] == "GGG" || dna[1] == "CCC")
+                            {
+                                gender1 = "Y";
+                            }
+                            else if(dna[1]=="AAA"||dna[1]=="TTT")
+                            {
+                                gender1 = "X";
+                            }
+                            
+                            if (dna[2] == "GGG" || dna[2] == "CCC")
+                            {
+                                gender2 = "Y";
+                            }
+                            else if(dna[2]=="AAA"||dna[2]=="TTT")
+                            {
+                                gender2 = "X";
+                            }
+                            Console.Write("Blob 1 "+gender1+gender2+": ");
                             for (int i = 0; i < dna.Length; i++)
                             {
                                 if (dna[i] != null)
@@ -2059,10 +2122,28 @@ class Program
                             }
 
                         }
-
+                            
                         else
                         {
-                            Console.Write("Blob 1: ");
+                            
+                            if (dna[1] == "GGG" || dna[1] == "CCC")
+                            {
+                                gender1 = "Y";
+                            }
+                            else if(dna[1]=="AAA"||dna[1]=="TTT")
+                            {
+                                gender1 = "X";
+                            }
+                            
+                            if (dna[2] == "GGG" || dna[2] == "CCC")
+                            {
+                                gender2 = "Y";
+                            }
+                            else if(dna[2]=="AAA"||dna[2]=="TTT")
+                            {
+                                gender2 = "X";
+                            }
+                            Console.Write("Blob 1 "+gender1+gender2+": ");
                             for (int i = 0; i < dnacase17.Length - 2; i = i + 3)
                             {
                                 Console.Write(dnacase17[i].ToString()+dnacase17[i+1].ToString()+dnacase17[i+2].ToString()+" ");
@@ -2074,7 +2155,7 @@ class Program
                         switch (chooseblob)
                         {
                             case 1: 
-                                Console.Write("Blob 2:"+" ");
+                                Console.Write("Blob 2 "+gendername2+": ");
                                 for (int i = 0; i < dna3.Length; i++)
                                 {
                                     if (dna3[i] != null)
@@ -2086,6 +2167,7 @@ class Program
                                 dna311 = repcounter1[0];
                                 break;
                             case 2:
+                                
                                 Console.WriteLine("Please Enter The DNA Strand of Blob 2");
                                 dna311 = Console.ReadLine();
                                 break;
@@ -2296,7 +2378,24 @@ class Program
                                 }
                             }
                         }
-                        Console.WriteLine("NEWBORN");
+                        if (DNAnewborn[1] == "GGG" || DNAnewborn[1] == "CCC")
+                        {
+                            gender1 = "Y";
+                        }
+                        else if(DNAnewborn[1]=="AAA"||DNAnewborn[1]=="TTT")
+                        {
+                            gender1 = "X";
+                        }
+                            
+                        if (DNAnewborn[2] == "GGG" || DNAnewborn[2] == "CCC")
+                        {
+                            gender2 = "Y";
+                        }
+                        else if(DNAnewborn[2]=="AAA"||DNAnewborn[2]=="TTT")
+                        {
+                            gender2 = "X";
+                        }
+                        Console.Write("Blob 3 "+gender1+gender2+": ");
                         for(int iotuz=0;iotuz<DNAnewborn.Length;iotuz++)
                         {
 
@@ -2307,7 +2406,25 @@ class Program
 
 
                         }
+
+                        int counterdnanewborn = 0;
+                        for (int i = 0; i < DNAnewborn.Length; i++)
+                        {
+                            if (DNAnewborn[i] != null)
+                            {
+                                counterdnanewborn=i;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
                         Console.WriteLine("");
+                        Console.Write("BLOB3 faulty codons ratio = ");
+                        Console.Write(count17+"/"+count3+" = %");
+                        Console.Write((count17 /count3) * 100);
+                        Console.WriteLine("");
+                        
                         if (((count17 /count3) * 100) > 10)
                         {
                             Console.WriteLine("The newborn died.");
