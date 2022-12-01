@@ -9,7 +9,7 @@ class Program
 
         Console.WriteLine("Welcome");
         Console.WriteLine("Please Choose The Operation");
-        Console.WriteLine("1-Load File **** 2-Enter Dna String **** 3-Create a Random Dna");
+        Console.WriteLine(" 1- Load File |---| 2- Enter Dna String |---| 3- Create a Random DNA ");
         choose = Convert.ToDouble(Console.ReadLine());
         string dnainput;
         string[] dna = new string[1000];
@@ -362,10 +362,10 @@ class Program
         }
 
         Console.WriteLine(""); 
-        Console.WriteLine("Please Choose an Operation"); 
-        Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5"); 
-        Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11"); 
-        Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 "); 
+        Console.WriteLine("Please Choose an Operation");
+        Console.WriteLine("0 |---| 1 |---| 2 |---| 3 |---| 4 |---| 5");
+        Console.WriteLine("6 |---| 7 |---| 8 |---| 9 |---| 10 |---| 11");
+        Console.WriteLine("12 |---| 13 |---| 14 |---| 15 |---| 16 |---| 17 ");
         int choose1 = Convert.ToInt32(Console.ReadLine());
 
 //other choosing part
@@ -1092,7 +1092,7 @@ class Program
                     char d123, e123, f123;
                     int i444 = 0, i555 = 1, i666 = 2;
 
-                    string[] DNA123 = new string[150];
+                    string[] DNA123 = new string[450];
 
                     float NumberofCodons123 = dnacase7.Length / 3;
                     int numberofcodonS123 = Convert.ToInt32(NumberofCodons123);
@@ -1521,7 +1521,7 @@ class Program
                     Console.WriteLine(" ");
 
                     char[] dna55=dnacase13.ToCharArray();
-                    string[] DNA13 = new string[150];
+                    string[] DNA13 = new string[450];
                     char a13, b13, c13;
                     int i55 = 0, i56 = 1, i57 = 2;
                     int numberofcodons13 = dna55.Length / 3;
@@ -1536,7 +1536,7 @@ class Program
                         i57 += 3;
                     }
                     int shortestgene = int.MaxValue;
-                    string[] dna31 = new string[250];
+                    string[] dna31 = new string[450];
                     int count13 = 0;
                     int pozitionofgene = 0;
                     for (int i = 0; i < numberofcodons13; i++)
@@ -1581,7 +1581,7 @@ class Program
                     break;
         
                 //Find the longest gene in DNA
-                case 14:
+                 case 14:
                     Console.Clear();
                     repcounter = new string[] { "" };
                     for (int i = 0; i < dna.Length; i++)
@@ -1626,7 +1626,7 @@ class Program
                         {
                             dnaL += find14[t14];
                             c14++;
-                            c15 = c14;
+                            
                             continue;
                         }
                         c14++;
@@ -1638,6 +1638,7 @@ class Program
                             {
                                 dnaL1 = dnaL;
                                 maxnum = count14;
+                                c15 = c14;
                                 count14 = 0;
                                 dnaL = "";
                                 continue;
@@ -1665,7 +1666,7 @@ class Program
                     Console.WriteLine("The Original DNA Strand:"+" "+ayrik1);
                     Console.WriteLine("Longest gene: "+ayrik3);
                     Console.WriteLine("Number of codons in the gene: "+maxnum);
-                    Console.WriteLine("Position of the gene: "+(c15-1));
+                    Console.WriteLine("Position of the gene: "+(Math.Abs(c15-maxnum)));
             
                     break;
         
@@ -1905,7 +1906,7 @@ class Program
                         {
                             dna17char[i] = dnacase17[i];
                         }
-                        string[] DNA17 = new string[100];
+                        string[] DNA17 = new string[390];
                         char a, b, c;
                         int i17 = 0, i27 = 1, i37 = 2;
                         int numberofcodons17 = dna17char.Length / 3;
@@ -1922,174 +1923,7 @@ class Program
                         
                         //blob 2 dna random
                         
-                        
-                        Random rndmdna = new Random();
-                        string[] words = { "A", "T", "G", "C" };
-                        //dna random
-                        int agen = rndmdna.Next(1, 7);
-                        int acodon = rndmdna.Next(1, 7);
-                        int blob = agen * acodon;
-                        while (blob % 3 != 0)
-                        {
-                            agen = rndmdna.Next(1, 7);
-                            acodon = rndmdna.Next(1, 7);
-                            blob = agen * acodon;
-
-                        }
-
-                        randomdna = new string[ 3*blob ];
-                        for (int i = 0; i < 3*blob; i++)
-                        {
-                            int b17 = rndmdna.Next(0, 4);
-                            randomdna[i] = words[b17];
-
-
-                        }
-
-                        string[] splitteddna = new string[blob];
-                        int x = 0;
-
-                        while (x <blob)
-                        {
-                            for (int i = 0; i <(3*blob)-2; i = i + 3)
-                            {
-
-                                splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
-                                while (splitteddna[x] == "ATG" || splitteddna[x] == "TAG" || splitteddna[x] == "TAA" ||
-                                       splitteddna[x] == "TGA")
-                                {
-                                    int bb = rndmdna.Next(0, 4);
-                                    int cc = rndmdna.Next(0, 4);
-                                    int d17 = rndmdna.Next(0, 4);
-                                    randomdna[i] = words[bb];
-                                    randomdna[i + 1] = words[cc];
-                                    randomdna[i + 2] = words[d17];
-                                    splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
-                                        
-
-                                }
-                                
-                                x++;
-
-                            }
-                        }
                        
-                        //gender random 
-                        string gendername2 = "";
-                        string[] gender = new string[4];
-                        do
-                        {
-                            int c17 = rndmdna.Next(0, 6);
-                        switch (c17)
-                        {
-                            case 0:
-                                gender[0] = "ATG";
-                                gender[1] = "AAA";
-                                gender[2] = "TTT";
-                                gender[3] = "TAG";
-                                gendername2 = "XX";
-                                break;
-                            case 1:
-                                gender[0] = "ATG";
-                                gender[1] = "TTT";
-                                gender[2] = "AAA";
-                                gender[3] = "TAG";
-                                gendername2 = "XX";
-                                break;
-                            case 2:
-                                gender[0] = "ATG";
-                                gender[1] = "TTT";
-                                gender[2] = "TTT";
-                                gender[3] = "TAG";
-                                gendername2 = "XX";
-                                break;
-                            case 3:
-                                gender[0] = "ATG";
-                                gender[1] = "TTT";
-                                gender[2] = "CCC";
-                                gender[3] = "TAG";
-                                gendername2 = "XY";
-                                break;
-                            case 4:
-                                gender[0] = "ATG";
-                                gender[1] = "GGG";
-                                gender[2] = "AAA";
-                                gender[3] = "TAG";
-                                gendername2 = "YX";
-                                break;
-                            case 5:
-                                gender[0] = "ATG";
-                                gender[1] = "GGG";
-                                gender[2] = "TTT";
-                                gender[3] = "TAG";
-                                gendername2 = "YX";
-                                break;
-                        }
-
-                        }while (gendername2 == "XX" && gendername=="XX"||gendername2 == "YX" && gendername=="YX"||gendername2 == "YX" && gendername=="XY"||gendername2 == "XY" && gendername=="YX"||gendername2 == "XY" && gendername=="XY"||    gendername2 == "XX" && gender1=="X"&&gender2=="X"||gendername2 == "YX" && gender1=="Y"&&gender2=="X"||gendername2 == "YX" && gender1=="X"&&gender2=="Y"||gendername2 == "XY" && gender1=="Y"&&gender2=="X"||gendername2 == "XY" && gender1=="X"&&gender2=="Y"); 
-
-                        
-
-                        string[] dna3 = new String [1000];
-                        
-                        //gender to main array
-                        for (int qqq = 0; qqq <= 3; qqq++)
-                        {
-                            dna3[qqq] = gender[qqq];
-                            
-                        }
-
-                        
-
-                        string[] stopcodon = new string[] { "TAA", "TGA", "TAG" };
-                        int qq = 0;
-                        
-
-                        //main array with start and stop codons
-                        for (int q1 = 4; q1 <splitteddna.Length+4+(2*agen) ; q1++)
-                        {
-                            if ( q1 == 4 || q1 == 4 + acodon + 2 || q1 == 4 + 2 * acodon + 4 || q1 == 4 + 3 * acodon + 6 ||
-                                 q1 == 4 + 4 * acodon + 8 || q1 == 4 + 5 * acodon + 10 )
-                                {
-                                    dna3[q1] = "ATG";
-                                    
-                                    
-                                }
-                                
-                            else if ( q1 == 4 + acodon +1 || q1 == 4 + 2 * acodon +3|| q1 == 4 + 3 * acodon + 5 ||
-                                          q1 == 4 + 4 * acodon + 7 || q1 == 4 + 5 * acodon + 9 || q1 == 4 + 6 * acodon + 11 )
-                            { 
-                                    int cdnrndm = rndmdna.Next(0, 3);
-                                    dna3[q1] = stopcodon[cdnrndm];
-                                    
-                                    
-
-                            }
-                            else if (qq < splitteddna.Length)
-                            {
-                                dna3[q1] = splitteddna[qq]; 
-                                 
-                                qq++;
-                            }
-                        }
-                        Console.WriteLine(" ");
-                        
-                        string[] repcounter1 = new string[] { "" };
-                        for (int i = 0; i < dna3.Length; i++)
-                        {
-
-                            repcounter1[0] = repcounter1[0] + dna3[i];
-                            if (repcounter1.Length == dna3.Length)
-                            {
-                                break;
-                            }
-                        }
-                        
-                        Console.WriteLine("Choose Blob 2:");
-                        Console.WriteLine("1-Random");
-                        Console.WriteLine("2-Input");
-                        int chooseblob = Convert.ToInt16(Console.ReadLine());
-                        string dna311 = "";
                         //choosing blob 2
                         Console.Clear();
                         Console.WriteLine("Generation" +" "+ ğ);
@@ -2126,20 +1960,20 @@ class Program
                         else
                         {
                             
-                            if (dna[1] == "GGG" || dna[1] == "CCC")
+                            if (DNA17[1] == "GGG" || DNA17[1] == "CCC")
                             {
                                 gender1 = "Y";
                             }
-                            else if(dna[1]=="AAA"||dna[1]=="TTT")
+                            else if(DNA17[1]=="AAA"||DNA17[1]=="TTT")
                             {
                                 gender1 = "X";
                             }
                             
-                            if (dna[2] == "GGG" || dna[2] == "CCC")
+                            if (DNA17[2] == "GGG" || DNA17[2] == "CCC")
                             {
                                 gender2 = "Y";
                             }
-                            else if(dna[2]=="AAA"||dna[2]=="TTT")
+                            else if(DNA17[2]=="AAA"||DNA17[2]=="TTT")
                             {
                                 gender2 = "X";
                             }
@@ -2152,24 +1986,283 @@ class Program
                             
                         }
                         Console.WriteLine(" ");    
+                        Console.WriteLine("Choose Blob 2:");
+                        Console.WriteLine("1-Random");
+                        Console.WriteLine("2-Input");
+                        int chooseblob = Convert.ToInt16(Console.ReadLine());
+                        string dna311 = "";
                         switch (chooseblob)
                         {
-                            case 1: 
-                                Console.Write("Blob 2 "+gendername2+": ");
-                                for (int i = 0; i < dna3.Length; i++)
+                            case 1:
+                                Random rndmdna = new Random();
+                                string[] words = { "A", "T", "G", "C" }; 
+                                //dna random
+                                int agen = rndmdna.Next(1, 7);
+                                int acodon = rndmdna.Next(1, 7);
+                                int blob = agen * acodon;
+                                while (blob % 3 != 0)
                                 {
-                                    if (dna3[i] != null)
+                                    agen = rndmdna.Next(1, 7);
+                                    acodon = rndmdna.Next(1, 7);
+                                    blob = agen * acodon;
+
+                                }
+
+                                randomdna = new string[ 3*blob ];
+                                for (int i = 0; i < 3*blob; i++)
+                                {
+                                    int b17 = rndmdna.Next(0, 4);
+                                    randomdna[i] = words[b17];
+
+
+                                }
+
+                                string[] splitteddna = new string[blob];
+                                int x = 0;
+
+                                while (x <blob)
+                                {
+                                    for (int i = 0; i <(3*blob)-2; i = i + 3)
                                     {
-                                        Console.Write(dna3[i] + " ");
+
+                                        splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
+                                        while (splitteddna[x] == "ATG" || splitteddna[x] == "TAG" || splitteddna[x] == "TAA" ||
+                                               splitteddna[x] == "TGA")
+                                        {
+                                            int bb = rndmdna.Next(0, 4);
+                                            int cc = rndmdna.Next(0, 4);
+                                            int d17 = rndmdna.Next(0, 4);
+                                            randomdna[i] = words[bb];
+                                            randomdna[i + 1] = words[cc];
+                                            randomdna[i + 2] = words[d17];
+                                            splitteddna[x] = randomdna[i] + randomdna[i + 1] + randomdna[i + 2];
+                                                
+
+                                        }
+                                        
+                                        x++;
+
+                                    }
+                                }
+                               
+                                //gender random 
+                                string gendername2 = "";
+                                string[] gender = new string[4];
+                                int c17 = rndmdna.Next(0, 6);
+                                
+                                    switch (c17)
+                                    {
+                                        case 0:
+                                            gender[0] = "ATG";
+                                            gender[1] = "AAA";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 1:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "AAA";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 2:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 3:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "CCC";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XY";
+                                            break;
+                                        case 4:
+                                            gender[0] = "ATG";
+                                            gender[1] = "GGG";
+                                            gender[2] = "AAA";
+                                            gender[3] = "TAG";
+                                            gendername2 = "YX";
+                                            break;
+                                        case 5:
+                                            gender[0] = "ATG";
+                                            gender[1] = "GGG";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "YX";
+
+                                            break;
+                                    }
+
+                                do
+                                {
+                                    c17 = rndmdna.Next(0, 6);
+                                
+                                    switch (c17)
+                                    {
+                                        case 0:
+                                            gender[0] = "ATG";
+                                            gender[1] = "AAA";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 1:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "AAA";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 2:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XX";
+                                            break;
+                                        case 3:
+                                            gender[0] = "ATG";
+                                            gender[1] = "TTT";
+                                            gender[2] = "CCC";
+                                            gender[3] = "TAG";
+                                            gendername2 = "XY";
+                                            break;
+                                        case 4:
+                                            gender[0] = "ATG";
+                                            gender[1] = "GGG";
+                                            gender[2] = "AAA";
+                                            gender[3] = "TAG";
+                                            gendername2 = "YX";
+                                            break;
+                                        case 5:
+                                            gender[0] = "ATG";
+                                            gender[1] = "GGG";
+                                            gender[2] = "TTT";
+                                            gender[3] = "TAG";
+                                            gendername2 = "YX";
+
+                                            break;
+                                    }
+
+                                }while (gender1 + gender2 == gendername2 ||
+                                        gender1 + gender2 == "XY" && gendername2 == "YX" ||
+                                        gender1 + gender2 == "YX" && gendername2 == "XY") ;
+                                
+
+
+
+                                
+
+                                string[] dna3 = new String [1000];
+                                
+                                //gender to main array
+                                for (int qqq = 0; qqq <= 3; qqq++)
+                                {
+                                    dna3[qqq] = gender[qqq];
+                                    
+                                }
+
+                                
+
+                                string[] stopcodon = new string[] { "TAA", "TGA", "TAG" };
+                                int qq = 0;
+                                
+
+                                //main array with start and stop codons
+                                for (int q1 = 4; q1 <splitteddna.Length+4+(2*agen) ; q1++)
+                                {
+                                    if ( q1 == 4 || q1 == 4 + acodon + 2 || q1 == 4 + 2 * acodon + 4 || q1 == 4 + 3 * acodon + 6 ||
+                                         q1 == 4 + 4 * acodon + 8 || q1 == 4 + 5 * acodon + 10 )
+                                        {
+                                            dna3[q1] = "ATG";
+                                            
+                                            
+                                        }
+                                        
+                                    else if ( q1 == 4 + acodon +1 || q1 == 4 + 2 * acodon +3|| q1 == 4 + 3 * acodon + 5 ||
+                                                  q1 == 4 + 4 * acodon + 7 || q1 == 4 + 5 * acodon + 9 || q1 == 4 + 6 * acodon + 11 )
+                                    { 
+                                            int cdnrndm = rndmdna.Next(0, 3);
+                                            dna3[q1] = stopcodon[cdnrndm];
+                                            
+                                            
+
+                                    }
+                                    else if (qq < splitteddna.Length)
+                                    {
+                                        dna3[q1] = splitteddna[qq]; 
+                                         
+                                        qq++;
                                     }
                                 }
                                 Console.WriteLine(" ");
-                                dna311 = repcounter1[0];
-                                break;
+                                
+                                string[] repcounter1 = new string[] { "" };
+                                for (int i = 0; i < dna3.Length; i++)
+                                {
+
+                                    repcounter1[0] = repcounter1[0] + dna3[i];
+                                    if (repcounter1.Length == dna3.Length)
+                                    {
+                                        break;
+                                    }
+                                }
+                                
+                                        Console.Write("Blob 2 "+gendername2+": ");
+                                        for (int i = 0; i < dna3.Length; i++)
+                                        {
+                                            if (dna3[i] != null)
+                                            {
+                                                Console.Write(dna3[i] + " ");
+                                            }
+                                        }
+                                        Console.WriteLine(" ");
+                                        dna311 = repcounter1[0];
+                                        break;
                             case 2:
                                 
-                                Console.WriteLine("Please Enter The DNA Strand of Blob 2");
+                                Console.Write("Please Enter The DNA Strand of Blob 2: ");
                                 dna311 = Console.ReadLine();
+                                Console.WriteLine(" ");
+                                string[] dna311temp = new string[450];
+                                string genderme1 = "";
+                                string genderme2 = "";
+                                int x2 = 0;
+                                for (int i = 0; i < dna311.Length - 2; i=i+3)
+                                {
+                                    dna311temp[x2] = dna311[i].ToString() + dna311[i + 1].ToString() + dna311[i + 2];
+                                    x2++;
+                                }
+                                if (dna311temp[1] == "GGG" || dna311temp[1] == "CCC")
+                                {
+                                    genderme1 = "Y";
+                                }
+                                else if(dna311temp[1]=="AAA"||dna311temp[1]=="TTT")
+                                {
+                                    genderme1 = "X";
+                                }
+                            
+                                if (dna311temp[2] == "GGG" || dna311temp[2] == "CCC")
+                                {
+                                    genderme2 = "Y";
+                                }
+                                else if(dna311temp[2]=="AAA"||dna311temp[2]=="TTT")
+                                {
+                                    genderme2 = "X";
+                                }
+                                Console.Write("Blob 2 "+genderme1+genderme2+": ");
+                               
+                                for (int i = 0; i < dna311temp.Length; i++)
+                                {
+                                    if (dna311temp[i] != null)
+                                    {
+                                        Console.Write(dna311temp[i] + " ");
+                                    }
+                                }
                                 break;
                         }
                                        
@@ -2455,9 +2548,9 @@ class Program
     
             Console.WriteLine(" ");
             Console.WriteLine("Please Choose an Operation");
-            Console.WriteLine("0 **** 1 **** 2 **** 3 **** 4 **** 5");
-            Console.WriteLine("6 **** 7 **** 8 **** 9 **** 10 **** 11");
-            Console.WriteLine("12 **** 13 **** 14 **** 15 **** 16 **** 17 ");
+            Console.WriteLine("0 |---| 1 |---| 2 |---| 3 |---| 4 |---| 5");
+            Console.WriteLine("6 |---| 7 |---| 8 |---| 9 |---| 10 |---| 11");
+            Console.WriteLine("12 |---| 13 |---| 14 |---| 15 |---| 16 |---| 17 ");
             choose1 = Convert.ToInt32(Console.ReadLine());
         }
 
