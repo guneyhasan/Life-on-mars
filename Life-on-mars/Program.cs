@@ -1,12 +1,33 @@
 ﻿using System.IO;
-
+//LIFE ON MARS
 class Program
 {
     public static void Main(string[] args)
     {
         bool tester3 = true, tester4 = true, tester5 = true, tester2 = true, tester1 = true, tester = true,test = false;
         double choose;
-
+        Console.WriteLine("0. Exit The Program");
+        Console.WriteLine("1. Load a DNA sequence from a file");
+        Console.WriteLine("2. Load a DNA sequence from a string");
+        Console.WriteLine("3. Generate random DNA sequence of a BLOB");
+        Console.WriteLine("4. Check DNA gene structure");
+        Console.WriteLine("5. Check DNA of BLOB organism");
+        Console.WriteLine("6. Produce complement of a DNA sequence");
+        Console.WriteLine("7. Determine amino acids");
+        Console.WriteLine("8. Delete codons (delete n codons, starting from mth codon) ");
+        Console.WriteLine("9. Insert codons (insert a codon sequence, starting from mth codon)");
+        Console.WriteLine("10. Find codons (find a codon sequence, starting from mth codon)");
+        Console.WriteLine("11. Reverse codons (reverse n codons, starting from mth codon) ");
+        Console.WriteLine("12. Find the number of genes in a DNA strand (BLOB or not)");
+        Console.WriteLine("13. Find the shortest gene in a DNA strand");
+        Console.WriteLine("14. Find the longest gene in a DNA strand");
+        Console.WriteLine("15. Find the most repeated n-nucleotide sequence in a DNA strand (STR - Short Tandem Repeat)");
+        Console.WriteLine("16. Hydrogen bond statistics for a DNA strand");
+        Console.WriteLine("17. Simulate BLOB generations using DNA strand 1 and 2 (DNA strand 3 is for the newborn)");
+        Console.WriteLine("Press any key to start program...");
+        Console.ReadKey();
+        Console.Clear();
+        Console.WriteLine("");
         Console.WriteLine("Welcome");
         Console.WriteLine("Please Choose The Operation");
         Console.WriteLine(" 1- Load File |---| 2- Enter Dna String |---| 3- Create a Random DNA ");
@@ -24,9 +45,9 @@ class Program
             case 1:
                 Console.Clear();
                 string filename;
-                Console.WriteLine("Please enter the name of text file:");
+                Console.WriteLine("Please enter the name of text file (The file must be located at C:):");
                 filename = (Console.ReadLine());
-                dnainput =  File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename) ;
+                dnainput =  File.ReadAllText("c:\\" + filename) ;
                 int modcontrol = dnainput.Length % 3;
                 dna = new string[150];
                 int x1 = 0;
@@ -377,9 +398,9 @@ class Program
                  case 1:
                 Console.Clear();
                 string filename;
-                Console.WriteLine("Please enter the name of text file:");
+                Console.WriteLine("Please enter the name of text file (The file must be located at C:):");
                 filename = (Console.ReadLine());
-                dnainput =  File.ReadAllText("/Users/hasanfurkanguney/Desktop/" + filename) ;
+                dnainput =  File.ReadAllText("c:\\" + filename) ;
                 int modcontrol = dnainput.Length % 3;
                 dna = new string[150];
                 int x1 = 0;
@@ -2563,7 +2584,6 @@ class Program
         Console.ReadKey();
     }
 }
-
 
 
 
